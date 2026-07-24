@@ -18,6 +18,7 @@ defmodule OgExDemoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/square", PageController, :square
   end
 
   # Other scopes may use custom stacks.

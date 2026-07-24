@@ -12,7 +12,10 @@ config :og_ex_demo,
   generators: [timestamp_type: :utc_datetime]
 
 config :og_ex,
-  fonts: [Path.expand("../priv/fonts/DejaVuSans.ttf", __DIR__)]
+  fonts: [
+    Path.expand("../priv/fonts/DejaVuSans.ttf", __DIR__),
+    Path.expand("../priv/fonts/DejaVuSerif-Bold.ttf", __DIR__)
+  ]
 
 # Configure the endpoint
 config :og_ex_demo, OgExDemoWeb.Endpoint,

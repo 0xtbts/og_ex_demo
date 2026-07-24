@@ -1,0 +1,35 @@
+<main class="mx-auto grid min-h-[70vh] max-w-5xl items-center gap-12 px-6 py-20 lg:grid-cols-[1fr_22rem]">
+  <section>
+    <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#1746D1]">
+      Pocket dispatch · Issue {@issue}
+    </p>
+    <h1 class="mt-5 max-w-2xl font-serif text-5xl font-bold leading-[0.98] tracking-tight text-slate-950 sm:text-7xl">
+      {@title}
+    </h1>
+    <p class="mt-7 max-w-xl text-xl leading-8 text-slate-600">
+      {@description}
+    </p>
+    <div class="mt-10 flex flex-wrap gap-3 text-sm font-semibold">
+      <span class="rounded-full bg-[#DCE7FF] px-4 py-2 text-[#1746D1]">600 × 600 PNG</span>
+      <span class="rounded-full bg-[#FFE1DA] px-4 py-2 text-[#9E2F19]">twitter: summary</span>
+    </div>
+    <a
+      href={~p"/"}
+      class="mt-10 inline-flex text-sm font-bold text-slate-900 underline decoration-[#FF6B4A] decoration-2 underline-offset-4 transition hover:text-[#1746D1] focus:outline-none focus:ring-2 focus:ring-[#1746D1] focus:ring-offset-4"
+    >
+      Back to the wide card
+    </a>
+  </section>
+
+  <aside class="relative aspect-square overflow-hidden rounded-[2rem] bg-[#1746D1] p-8 text-white shadow-2xl shadow-blue-900/20">
+    <span class="absolute -bottom-12 -right-5 font-serif text-[13rem] font-bold leading-none text-[#FF6B4A]">
+      {@issue}
+    </span>
+    <p class="relative text-xs font-bold uppercase tracking-[0.2em] text-[#DCE7FF]">
+      OGEX / SQUARE
+    </p>
+    <p class="relative mt-16 max-w-48 font-serif text-4xl font-bold leading-none">
+      Compact by design.
+    </p>
+  </aside>
+</main>
