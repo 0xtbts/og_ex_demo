@@ -19,6 +19,8 @@ defmodule OgExDemoWeb.Router do
 
     get "/", PageController, :home
     get "/square", PageController, :square
+    get "/svg", PageController, :svg
+    get "/square-svg", PageController, :square_svg
   end
 
   # Other scopes may use custom stacks.
