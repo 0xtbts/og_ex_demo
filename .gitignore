@@ -22,19 +22,20 @@ erl_crash.dump
 # Temporary files, for example, from tests.
 /tmp/
 
-# Ignore package tarball (built via "mix hex.build").
-og_ex_demo-*.tar
+# Local environment files can contain deployment secrets.
+.env
+.env.*
+!.env.example
 
-# Ignore assets that are produced by build tools.
-/priv/static/assets/
+# Ignore assets produced inside any umbrella application.
+/apps/*/priv/static/assets/
 
 # Ignore digested assets cache.
-/priv/static/cache_manifest.json
+/apps/*/priv/static/cache_manifest.json
 
 # In case you use Node.js/npm, you want to ignore these.
 npm-debug.log
-/assets/node_modules/
+/apps/*/assets/node_modules/
 
-# Database files
-*.db
-*.db-*
+# Local logs.
+*.log

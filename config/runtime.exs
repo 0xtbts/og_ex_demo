@@ -12,29 +12,18 @@ import Config
 # If you use `mix release`, you need to explicitly enable the server
 # by passing the PHX_SERVER=true when you start it:
 #
-#     PHX_SERVER=true bin/og_ex_demo start
+#     PHX_SERVER=true bin/v0_1_0 start
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
 if System.get_env("PHX_SERVER") do
-  config :og_ex_demo, OgExDemoWeb.Endpoint, server: true
+  config :v0_1_0, V0_1_0Web.Endpoint, server: true
 end
 
-config :og_ex_demo, OgExDemoWeb.Endpoint,
+config :v0_1_0, V0_1_0Web.Endpoint,
   http: [port: String.to_integer(System.get_env("PORT", "4000"))]
 
 if config_env() == :prod do
-  database_path =
-    System.get_env("DATABASE_PATH") ||
-      raise """
-      environment variable DATABASE_PATH is missing.
-      For example: /etc/og_ex_demo/og_ex_demo.db
-      """
-
-  config :og_ex_demo, OgExDemo.Repo,
-    database: database_path,
-    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "5")
-
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want
@@ -47,11 +36,16 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  # Render supplies its public hostname automatically. PHX_HOST remains an
+  # explicit override for custom domains and non-Render deployments.
+  host =
+    System.get_env("PHX_HOST") ||
+      System.get_env("RENDER_EXTERNAL_HOSTNAME") ||
+      "example.com"
 
-  config :og_ex_demo, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
+  config :v0_1_0, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
-  config :og_ex_demo, OgExDemoWeb.Endpoint,
+  config :v0_1_0, V0_1_0Web.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
@@ -67,7 +61,7 @@ if config_env() == :prod do
   # To get SSL working, you will need to add the `https` key
   # to your endpoint configuration:
   #
-  #     config :og_ex_demo, OgExDemoWeb.Endpoint,
+  #     config :v0_1_0, V0_1_0Web.Endpoint,
   #       https: [
   #         ...,
   #         port: 443,
@@ -89,7 +83,7 @@ if config_env() == :prod do
   # We also recommend setting `force_ssl` in your config/prod.exs,
   # ensuring no data is ever sent via http, always redirecting to https:
   #
-  #     config :og_ex_demo, OgExDemoWeb.Endpoint,
+  #     config :v0_1_0, V0_1_0Web.Endpoint,
   #       force_ssl: [hsts: true]
   #
   # Check `Plug.SSL` for all available options in `force_ssl`.
@@ -99,7 +93,7 @@ if config_env() == :prod do
   # In production you need to configure the mailer to use a different adapter.
   # Here is an example configuration for Mailgun:
   #
-  #     config :og_ex_demo, OgExDemo.Mailer,
+  #     config :v0_1_0, V0_1_0.Mailer,
   #       adapter: Swoosh.Adapters.Mailgun,
   #       api_key: System.get_env("MAILGUN_API_KEY"),
   #       domain: System.get_env("MAILGUN_DOMAIN")
