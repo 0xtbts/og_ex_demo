@@ -39,8 +39,8 @@ defmodule OgExDemoWeb.HomeOgCard do
       }
 
       .card {
-        width: 1200px;
-        height: 630px;
+        width: 100%;
+        height: 100%;
         padding: 72px;
         display: flex;
         flex-direction: column;

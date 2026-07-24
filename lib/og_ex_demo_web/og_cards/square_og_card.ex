@@ -58,8 +58,8 @@ defmodule OgExDemoWeb.SquareOgCard do
 
       .card {
         position: relative;
-        width: 600px;
-        height: 600px;
+        width: 100%;
+        height: 100%;
         overflow: hidden;
         padding: 54px;
         display: flex;
