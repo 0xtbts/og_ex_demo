@@ -1,0 +1,50 @@
+<main class="mx-auto min-h-screen max-w-5xl px-6 py-20">
+  <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-700">
+    OgEx · f_image_sources
+  </p>
+  <h1 id="demo-title" class="mt-4 text-5xl font-bold tracking-tight text-slate-950">
+    {@title}
+  </h1>
+  <p class="mt-6 max-w-3xl text-xl leading-8 text-slate-600">
+    {@description}
+  </p>
+
+  <nav
+    id="image-source-demos"
+    class="mt-12 grid gap-5 md:grid-cols-3"
+    aria-label="Image source demos"
+  >
+    <.link
+      :for={
+        {path, label, detail, key} <- [
+          {~p"/embedded-local", "Embedded local", "Generated PNG using priv/static bytes",
+           :embedded_local},
+          {~p"/embedded-external", "Embedded external",
+           "Generated PNG using an allowlisted HTTPS image", :embedded_external},
+          {~p"/direct-image", "Direct image", "Existing SVG URL; no Takumi render", :direct_image}
+        ]
+      }
+      navigate={path}
+      class={[
+        "group rounded-2xl border p-6 transition hover:-translate-y-1 hover:shadow-xl",
+        if(@active_demo == key,
+          do: "border-cyan-500 bg-cyan-50 shadow-lg",
+          else: "border-slate-200 bg-white hover:border-cyan-300"
+        )
+      ]}
+    >
+      <span class="block font-semibold text-slate-950 group-hover:text-cyan-800">{label}</span>
+      <span class="mt-2 block text-sm leading-6 text-slate-500">{detail}</span>
+    </.link>
+  </nav>
+
+  <%= if @active_demo do %>
+    <section id="live-verification" class="mt-10 rounded-2xl bg-slate-950 p-6 text-slate-100">
+      <p class="font-mono text-sm text-cyan-300">Live metadata is active on this route.</p>
+      <p class="mt-2 text-sm leading-6 text-slate-300">
+        Inspect the page source for <code>og:image</code>, then open that URL to see the actual
+        image response.
+      </p>
+    </section>
+  <% end %>
+</main>

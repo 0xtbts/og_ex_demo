@@ -3,6 +3,17 @@
 This umbrella repository keeps runnable examples for released OgEx versions and
 individual in-development features.
 
+The current apps are:
+
+- `v0_1_0` for the published OgEx 0.1.0 package.
+- `f_image_sources` for embedded local images, embedded allowlisted external
+  images, and direct existing social images. It uses port 4001 in development.
+
+Because Mix umbrellas share one dependency graph, the feature app overrides
+`og_ex` with the adjacent development checkout for the entire umbrella.
+Released-version apps remain source snapshots, but dependency-version isolation
+would require separate Mix roots.
+
 ## Application naming
 
 - Released versions use `v<major>_<minor>_<patch>`, such as `v0_1_0`.

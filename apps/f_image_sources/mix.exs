@@ -1,10 +1,10 @@
-defmodule V0_1_0.MixProject do
+defmodule FImageSources.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :v0_1_0,
-      version: "0.1.0",
+      app: :f_image_sources,
+      version: "0.2.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
@@ -24,7 +24,7 @@ defmodule V0_1_0.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {V0_1_0.Application, []},
+      mod: {FImageSources.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -44,8 +44,7 @@ defmodule V0_1_0.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      # Umbrella siblings share one dependency graph. The image-source feature
-      # app temporarily selects the adjacent development checkout for both apps.
+      # This feature app exercises the adjacent unreleased 0.2 implementation.
       {:og_ex, path: "../../../og-ex", override: true},
       {:phoenix, "~> 1.8.5"},
       {:phoenix_html, "~> 4.1"},
@@ -83,10 +82,10 @@ defmodule V0_1_0.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind v0_1_0", "esbuild v0_1_0"],
+      "assets.build": ["compile", "tailwind f_image_sources", "esbuild f_image_sources"],
       "assets.deploy": [
-        "tailwind v0_1_0 --minify",
-        "esbuild v0_1_0 --minify",
+        "tailwind f_image_sources --minify",
+        "esbuild f_image_sources --minify",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
