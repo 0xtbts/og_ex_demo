@@ -4,7 +4,7 @@ defmodule FImageSourcesWeb.PageController do
 
   alias FImageSourcesWeb.{ExternalImageOgCard, LocalImageOgCard}
 
-  @external_image_url "https://raw.githubusercontent.com/obasekiosa/og_ex/master/artifacts/og_ex-preview.png"
+  @external_image_url "https://raw.githubusercontent.com/obasekiosa/og_ex/v0.2.0/artifacts/og_ex-preview.png"
 
   @doc """
   Renders the image-source demo index without attaching a social image.
