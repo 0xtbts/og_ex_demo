@@ -11,6 +11,20 @@ individual in-development features.
 Each application lives under `apps/` and owns its Phoenix source, tests, assets,
 and version-specific OgEx dependency.
 
+## Shared fonts
+
+Font binaries live once in the umbrella's top-level `fonts/` directory. Each
+demo links `priv/fonts` to that directory:
+
+```text
+apps/v0_1_0/priv/fonts -> ../../../fonts
+```
+
+Use the same relative link in new `vX_Y_Z` and `f_<feature>` applications so
+Git does not store another copy of each font. Mix dereferences the link while
+assembling a release, so every deployed application still receives real font
+files in its packaged `priv/fonts` directory.
+
 ## Included applications
 
 ### `v0_1_0`
