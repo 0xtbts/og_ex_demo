@@ -14,6 +14,14 @@ Because Mix umbrellas share one dependency graph, the feature app overrides
 Released-version apps remain source snapshots, but dependency-version isolation
 would require separate Mix roots.
 
+The development checkout is versioned `0.2.0`, but no `v0.2.0` native release
+exists yet. Set `OG_EX_BUILD=1` on the first Mix command that may compile OgEx:
+
+```bash
+OG_EX_BUILD=1 mix deps.compile og_ex --force
+OG_EX_BUILD=1 mix phx.server
+```
+
 ## Application naming
 
 - Released versions use `v<major>_<minor>_<patch>`, such as `v0_1_0`.
